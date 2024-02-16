@@ -1,7 +1,8 @@
 let RecipeArray = [];
 
 // Define the RecipeObject constructor
-let RecipeObject = function (pName, pCuisine, pDifficulty) {
+let RecipeObject = function (pID, pName, pCuisine, pDifficulty) {
+    this pID = RecipeArray.length +1;
     this.name = pName;
     this.cuisine = pCuisine;
     this.difficulty = pDifficulty;
@@ -61,5 +62,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Dropdown selection event handling for difficulty
     document.getElementById("select-difficulty").addEventListener("change", function () {
         selectedDifficulty = this.value;
+    });
+
+     // need one for our details page to fill in the info based on the passed in ID
+     $(document).on("pagebeforeshow", "#details", function (event) {   
+        let pID = localStorage.getItem('parm');  // get the unique key back from the storage dictionairy
+        document.getElementById("theID").innerHTML = pID;
     });
 });
