@@ -1,8 +1,8 @@
 let RecipeArray = [];
 
 // Define the RecipeObject constructor
-let RecipeObject = function (pID, pName, pCuisine, pDifficulty) {
-    this pID = RecipeArray.length +1;
+let RecipeObject = function (pName, pCuisine, pDifficulty) {
+    this.ID = RecipeArray.length +1;
     this.name = pName;
     this.cuisine = pCuisine;
     this.difficulty = pDifficulty;
@@ -25,7 +25,7 @@ function createList() {
     // Create new list items for each recipe in the array
     RecipeArray.forEach(function (element) {
         var li = document.createElement('li');
-        li.innerHTML = `${element.difficulty}: ${element.cuisine} - ${element.name}`;
+        li.innerHTML = `${element.ID}: ${element.difficulty}: ${element.cuisine} - ${element.name}`;
         myul.appendChild(li);
     });
 
