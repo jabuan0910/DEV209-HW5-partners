@@ -45,13 +45,20 @@ document.addEventListener("DOMContentLoaded", function () {
         let nameInput = document.getElementById("dataInput").value;
 
         // Push new recipe object to array
-        RecipeArray.push(new RecipeObject(nameInput, selectedCuisine, selectedDifficulty));
+        let recipe = new RecipeObject(nameInput, selectedCuisine, selectedDifficulty);
+        RecipeArray.push(recipe);
 
         // Clear input fields
         document.getElementById("dataInput").value = "";
 
         // Re-create the list to include the new recipe
         createList();
+
+
+        localStorage.setItem("data", JSON.stringify(RecipeArray));
+        localStorage.setItem('latest-recipe-id', recipe.ID);
+
+        window.location.href = "#details"
     });
 
     // Dropdown selection event handling for cuisine
@@ -66,7 +73,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
      // need one for our details page to fill in the info based on the passed in ID
      $(document).on("pagebeforeshow", "#details", function (event) {   
-        let pID = localStorage.getItem('parm');  // get the unique key back from the storage dictionairy
-        document.getElementById("theID").innerHTML = pID;
+        let pID = localStorage.getItem('latest-recipe-id');  // get the unique key back from the storage dictionairy
+        if (pID === undefined || pID === null) {
+            return;
+        }
+        let data = RecipeArray[parseInt(pID) - 1];
+        if (data === undefined || data === null) {
+            return;
+        } 
+        document.getElementById("theID").innerHTML = "ID: " + pID;
+        document.getElementById("name").innerHTML = "Name: " + data.name;
     });
 });
