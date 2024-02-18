@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="site.css">
 
     <title>Recipe Tracker</title>
 </head>
@@ -28,9 +29,11 @@
             <h2>Welcome to Recipe Tracker</h2>
         </div>
 
-        <div data-role="content" data-theme='a'>
+        <div id="pictures" data-role="content" data-theme='a'>
             Keep track of your favorite recipes here.<br><br>
-            <img src="images/note.jpg" alt="picture of notes">
+            <img src="images/dish1.jpg" alt="picture of food">&nbsp;&nbsp;&nbsp;
+            <img src="images/dish2.jpg" alt="picture of food">&nbsp;&nbsp;&nbsp;
+            <img src="images/dish3.jpg" alt="picture of food"><br><br><br>
         </div>
 
         <div data-role="footer" data-theme='b'>
@@ -136,9 +139,19 @@
                     <p id="theID"></p>
                 </li>
                 <li>
-                    <p id="name"></p>
+                    <p id="theName"></p>
+                </li>
+                <li>
+                    <p id="theCuisine"></p>
+                </li>
+                <li>
+                    <p id="theDifficulty"></p>
+                </li>
+                <li>
+                    <p id="theURL"></p>
                 </li>
             </ul>
+            
 
         </div>
 

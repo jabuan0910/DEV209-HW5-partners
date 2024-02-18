@@ -45,7 +45,10 @@ function showDetails(index) {
     let data = RecipeArray[index];
     localStorage.setItem('latest-recipe-id', data.ID.toString());
     document.getElementById("theID").innerHTML = "ID: " + data.ID;
-    document.getElementById("name").innerHTML = "Name: " + data.name + "<br>URL: <a href='" + data.URL + "' target='_blank'>" + data.URL + "</a>";
+    document.getElementById("theName").innerHTML = "Name: " +data.name;
+    document.getElementById("theCuisine").innerHTML = "Cuisine: " + data.cuisine;
+    document.getElementById("theDifficulty").innerHTML = "Difficulty: " + data.difficulty
+    document.getElementById("theURL").innerHTML = "Click for instructions: <a href='" + data.URL + "' target='_blank'>" + data.URL + "</a>";
     $.mobile.changePage("#details");
 }
 
