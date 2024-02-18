@@ -1,13 +1,19 @@
 let RecipeArray = [];
 
 // Define the RecipeObject constructor
-let RecipeObject = function (pName, pCuisine, pDifficulty) {
+let RecipeObject = function (pName, pCuisine, pDifficulty, pURL) {
     this.ID = RecipeArray.length +1;
     this.name = pName;
     this.cuisine = pCuisine;
     this.difficulty = pDifficulty;
+    this.URL = pURL
 };
 
+// load some starters
+
+RecipeArray.push(new RecipeObject("Chicken & Spinach Skillet Pasta", "American", "Medium", "https://www.eatingwell.com/recipe/267768/chicken-spinach-skillet-pasta-with-lemon-parmesan/"));
+RecipeArray.push(new RecipeObject("Spaghetti & Spinach with Sun-Dried Tomato", "Italian", "Easy", "https://www.eatingwell.com/recipe/7919563/spaghetti-spinach-with-sun-dried-tomato-cream-sauce/"));
+RecipeArray.push(new RecipeObject("One-Pot Garlicky Shrimp & Broccoli ", "Chinese", "Medium", "https://www.eatingwell.com/recipe/7919492/one-pot-garlicky-shrimp-broccoli/"));
 // Default selected cuisine and difficulty
 let selectedCuisine = "Italian";
 let selectedDifficulty = "Medium";
@@ -25,7 +31,7 @@ function createList() {
     // Create new list items for each recipe in the array
     RecipeArray.forEach(function (element) {
         var li = document.createElement('li');
-        li.innerHTML = `${element.ID}: ${element.difficulty}: ${element.cuisine} - ${element.name}`;
+        li.innerHTML = `${element.ID}: ${element.difficulty}: ${element.cuisine} - ${element.name} - ${element.URL}`;
         myul.appendChild(li);
     });
 
@@ -43,9 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add recipe button event listener
     document.getElementById("buttonAdd").addEventListener("click", function () {
         let nameInput = document.getElementById("dataInput").value;
+        let URLinput = document.getElementById("URLinput").value;
 
         // Push new recipe object to array
-        let recipe = new RecipeObject(nameInput, selectedCuisine, selectedDifficulty);
+        let recipe = new RecipeObject(nameInput, selectedCuisine, selectedDifficulty, URLinput);
         RecipeArray.push(recipe);
 
         // Clear input fields
